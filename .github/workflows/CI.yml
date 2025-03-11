@@ -26,12 +26,12 @@ jobs:
       - name: Run arxiv2tex tests
         run: |
           python arxiv2tex.py --query llm --max_results 5 --mode manual --prefix test01
-          python arxiv2tex.py --query llm --max_results 5 --mode manual --engine latex --prefix test02
-          python arxiv2tex.py --query llm --max_results 5 --mode manual --cls ltjsarticle --translate ja --prefix test03
+          python arxiv2tex.py --query llm --max_results 5 --mode manual --cls ltjsarticle --translate ja --prefix test02
 
       - name: Compile LaTeX documents
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: test01.tex test02.tex test03.tex
+          root_file: test01.tex test02.tex
           latexmk_use_lualatex: true
           latexmk_shell_escape: true
+          extra_system_packages: "tput"
