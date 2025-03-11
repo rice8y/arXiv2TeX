@@ -24,4 +24,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run arxiv2tex tests
-        run: python arxiv2tex.py --query "LLM" --max_results 5 --mode manual
+        run: python arxiv2tex.py --query llm --max_results 5 --mode manual
