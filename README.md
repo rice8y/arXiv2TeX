@@ -33,10 +33,12 @@ The script will generate a LaTeX file (by default arXiv.tex) that contains a tab
 - `--max_results`: The maximum number of search results to fetch. (Default is 10)
 - `--sort_by`: The criterion for sorting search results. Options are: relevance, submittedDate, or lastUpdatedDate. (Default is submittedDate)
 - `--columns`: A comma-separated list of columns to include in the table. Allowed values are: authors, title, summary, published, and link. (Default is authors,title,published,link)
-- `--cls`: The LaTeX document class to use (for example, article, report, etc.). (Default is article)
 - `--prefix`: The prefix for the output .tex file. For example, if set to arXiv, the output file will be named arXiv.tex. (Default is arXiv)
 - `--mode`: The mode of operation. Use auto for automatic compilation (the script will run the LaTeX compiler) or manual if you prefer to compile the generated .tex file yourself. (Default is auto)
+- `--cls`: The LaTeX document class to use (for example, article, report, etc.). (Default is article)
 - `--engine`: The LaTeX engine to use for compiling the document. Options include pdflatex, xelatex, lualatex, uplatex, platex, and latex. (Default is lualatex)
+- `--translate`: The target language code for translating paper titles and summaries (e.g., 'ja' for Japanese). If not specified, translation is disabled. (Default is None)
+- `--service_urls`: A list of Google Translate service URLs to use for translation. This is useful if certain Google Translate servers are blocked or slow in your region. For example: `translate.google.com translate.google.co.kr`. Only used if `--translate` is specified. (Default is None)
 
 ## Todo
 
