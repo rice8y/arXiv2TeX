@@ -16,7 +16,7 @@ git clone https://github.com/rice8y/arXiv2TeX.git
 
 - **LaTeX:** A working LaTeX installation is required for compiling the generated .tex file.
 - **arxiv:** The Python arXiv module is used to perform the search and retrieve paper metadata.
-- **googletrans (optional):** The googletrans module is used to translate the paper title and summary if the --translate option is specified. If not installed, the translation feature will be disabled without affecting other functionalities.
+- **googletrans (optional):** The googletrans module is used to translate the paper title and summary if the `--translate` option is specified. If not installed, the translation feature will be disabled without affecting other functionalities.
 
 ## Usage
 
