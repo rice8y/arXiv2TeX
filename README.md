@@ -40,7 +40,7 @@ The script will generate a LaTeX file (by default arXiv.tex) that contains a tab
 
 ## Todo
 
-- [] The table format of summary is corrupted.
+- [ ] The table format of summary is corrupted.
 
 ## License
 
