@@ -24,4 +24,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run arxiv2tex tests
-        run: python arxiv2tex.py --query llm --max_results 5 --mode manual
+        run: python arxiv2tex.py --query llm --max_results 5 --mode manual --prefix test
+        
+      - name: Compile LaTeX documents
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: test.tex
+          work_in_root_file_dir: true
+          compiler: lualatex
+          args: -interaction=nonstopmode
