@@ -38,6 +38,10 @@ The script will generate a LaTeX file (by default arXiv.tex) that contains a tab
 - `--mode`: The mode of operation. Use auto for automatic compilation (the script will run the LaTeX compiler) or manual if you prefer to compile the generated .tex file yourself. (Default is auto)
 - `--engine`: The LaTeX engine to use for compiling the document. Options include pdflatex, xelatex, lualatex, uplatex, platex, and latex. (Default is lualatex)
 
+## Todo
+
+- [] The table format of summary is corrupted.
+
 ## License
 
 This package is distributed under the MIT License. See [LICENSE](LICENSE).
