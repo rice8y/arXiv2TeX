@@ -1,5 +1,4 @@
 import arxiv
-from googletrans import Translator
 import argparse
 import re
 import os
