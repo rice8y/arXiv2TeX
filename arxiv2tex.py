@@ -1,9 +1,9 @@
 import arxiv
+from googletrans import Translator
 import argparse
 import re
 import os
 import subprocess
-import glob
 
 ALLOWED_COLUMNS = ["authors", "title", "summary", "published", "link"]
 
@@ -13,10 +13,12 @@ def parse_args():
     parser.add_argument("--max_results", type=int, default=10, help="Number of results to fetch")
     parser.add_argument("--sort_by", type=str, choices=["relevance", "submittedDate", "lastUpdatedDate"], default="submittedDate", help="Sorting criterion")
     parser.add_argument("--columns", type=str, default="authors,title,published,link", help="Comma-separated list of columns to display. Allowed: authors, title, summary, published, link")
-    parser.add_argument("--cls", type=str, default="article", help="LaTeX document class to use (e.g., article, report, etc.)")
     parser.add_argument("--prefix", type=str, default="arXiv", help="Prefix for the output .tex file (e.g., 'arXiv' creates arXiv.tex)")
     parser.add_argument("--mode", type=str, choices=["auto", "manual"], default="auto", help="Mode selection: 'auto' for automatic compilation or 'manual'")
+    parser.add_argument("--cls", type=str, default="article", help="LaTeX document class to use (e.g., article, report, etc.)")
     parser.add_argument("--engine", type=str, choices=["pdflatex", "xelatex", "lualatex", "uplatex", "platex", "latex"], default="lualatex", help="LaTeX engine to use")
+    parser.add_argument("--translate", type=str, default=None, help="Target language for translating paper titles and summaries (e.g., 'ja' for Japanese)")
+    parser.add_argument("--service_urls", type=str, nargs="+", default=None, help="List of Google Translate service URLs (e.g., 'translate.google.com translate.google.co.jp')")
     return parser.parse_args()
 
 def escape_latex(s):
@@ -53,14 +55,20 @@ def preamble(lines, args, col):
         "\\newlength\\autolength",
         f"\\setlength\\autolength{{\\dimexpr(\\textwidth - (5\\arrayrulewidth + 8\\tabcolsep)) / {len(col)}\\relax}}"
     ])
-
-def get_value(col, r):
+    
+def get_value(col, r, translator, translate, service_urls):
     if col == "authors":
         return ", ".join([escape_latex(author.name) for author in r.authors])
     elif col == "title":
-        return escape_latex(r.title)
+        if translate:
+            return escape_latex(translator(r.title, translate, service_urls))
+        else:
+            return escape_latex(r.title)
     elif col == "summary":
-        return escape_latex(" ".join(r.summary.split()))
+        if translate:
+            return escape_latex(translator(" ".join(r.summary.split()), translate, service_urls))
+        else:
+            return escape_latex(" ".join(r.summary.split()))
     elif col == "published":
         return escape_latex(str(r.published))
     elif col == "link":
@@ -80,15 +88,15 @@ def get_value(col, r):
     else:
         return ""
 
-def make_table(search, columns):
+def make_table(results, columns, translator, translate, service_urls):
     table_lines = []
     table_lines.append("\\begin{longtable}{|" + "P{\\autolength}|" * len(columns) + "}")
     table_lines.append("\\hline")
     header = " & ".join([f"\\textbf{{{col.capitalize()}}}" for col in columns])
     table_lines.append(header + " \\\\")
     table_lines.append("\\hline")
-    for r in search.results():
-        row = " & ".join([get_value(col, r) for col in columns])
+    for r in results:
+        row = " & ".join([get_value(col, r, translator, translate, service_urls) for col in columns])
         table_lines.append(row + " \\\\ \\hline")
     table_lines.append("\\end{longtable}")
     return table_lines
@@ -126,6 +134,21 @@ def cleanup_temp_files(base_name):
 
 def main():
     args = parse_args()
+    
+    if args.translate:
+        from googletrans import Translator
+        
+        def translator(text, dest, service_urls):
+            if service_urls != None:
+                tl = Translator(service_urls)
+            else:
+                tl = Translator()
+            rst = tl.translate(text, dest=dest)
+            return rst.text
+    else:
+        def translator(text, dest, service_urls):
+            return text
+        
     columns = [col.strip().lower() for col in args.columns.split(",")]
     for col in columns:
         if col not in ALLOWED_COLUMNS:
@@ -143,11 +166,12 @@ def main():
         max_results=args.max_results,
         sort_by=sort_criterion
     )
+    results = client.results(search)
 
     lines = []
     preamble(lines, args, columns)
     lines.append("\\begin{document}")
-    lines.extend(make_table(search, columns))
+    lines.extend(make_table(results, columns, translator, args.translate, args.service_urls))
     lines.append("\\end{document}")
 
     output = f"{args.prefix}.tex"
