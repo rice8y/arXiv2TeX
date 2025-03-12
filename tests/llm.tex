@@ -1,46 +1,44 @@
 \documentclass[dvipdfmx]{article}
 \usepackage[hidelinks]{hyperref}
-\usepackage{float}
 \usepackage[margin=1in]{geometry}
-\usepackage{longtable}
-\usepackage{array}
-\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
-\newlength\autolength
-\setlength\autolength{\dimexpr(\textwidth - (5\arrayrulewidth + 8\tabcolsep)) / 4\relax}
+\usepackage{amsmath}
+\usepackage{tabularray}
+\DefTblrTemplate{conthead-text}{default}{}
+\DefTblrTemplate{caption}{default}{}
+\DefTblrTemplate{conthead}{default}{}
+\DefTblrTemplate{capcont}{default}{}
 \begin{document}
-\begin{longtable}{|P{\autolength}|P{\autolength}|P{\autolength}|P{\autolength}|}
-\hline
-\textbf{Authors} & \textbf{Title} & \textbf{Published} & \textbf{Link} \\
-\hline
-Guiwei Zhang, Tianyu Zhang, Mohan Zhou, Yalong Bai, Biye Li & V2Flow: Unifying Visual Tokenization and Large Language Model Vocabularies for Autoregressive Image Generation & 2025-03-10 16:12:50+00:00 & \href{http://arxiv.org/abs/2503.07493v1}{arXiv:2503.07493} \\ \hline
-Ryugo Morita, Ko Watanabe, Jinjia Zhou, Andreas Dengel, Shoya Ishimaru & GenAIReading: Augmenting Human Cognition with Interactive Digital Textbooks Using Large Language Models and Image Generation Models & 2025-03-10 15:42:07+00:00 & \href{http://arxiv.org/abs/2503.07463v1}{arXiv:2503.07463} \\ \hline
-Xiangru Tang, Daniel Shao, Jiwoong Sohn, Jiapeng Chen, Jiayi Zhang, Jinyu Xiang, Fang Wu, Yilun Zhao, Chenglin Wu, Wenqi Shi, Arman Cohan, Mark Gerstein & MedAgentsBench: Benchmarking Thinking Models and Agent Frameworks for Complex Medical Reasoning & 2025-03-10 15:38:44+00:00 & \href{http://arxiv.org/abs/2503.07459v1}{arXiv:2503.07459} \\ \hline
-Florian Kandra, Vera Demberg, Alexander Koller & LLMs syntactically adapt their language use to their conversational partner & 2025-03-10 15:37:07+00:00 & \href{http://arxiv.org/abs/2503.07457v1}{arXiv:2503.07457} \\ \hline
-Meng Zheng, Jiajin Zhang, Benjamin Planche, Zhongpai Gao, Terrence Chen, Ziyan Wu & Anatomy-Aware Conditional Image-Text Retrieval & 2025-03-10 15:36:49+00:00 & \href{http://arxiv.org/abs/2503.07456v1}{arXiv:2503.07456} \\ \hline
-Sargam Yadav, Asifa Mehmood Qureshi, Abhishek Kaushik, Shubham Sharma, Roisin Loughran, Subramaniam Kazhuparambil, Andrew Shaw, Mohammed Sabry, Niamh St John Lynch, . Nikhil Singh, Padraic O'Hara, Pranay Jaiswal, Roshan Chandru, David Lillis & From Idea to Implementation: Evaluating the Influence of Large Language Models in Software Development -- An Opinion Paper & 2025-03-10 15:30:05+00:00 & \href{http://arxiv.org/abs/2503.07450v1}{arXiv:2503.07450} \\ \hline
-Jaewook Lee, Jeongah Lee, Wanyong Feng, Andrew Lan & From Text to Visuals: Using LLMs to Generate Math Diagrams with Vector Graphics & 2025-03-10 15:13:38+00:00 & \href{http://arxiv.org/abs/2503.07429v1}{arXiv:2503.07429} \\ \hline
-Junkang Wu, Kexin Huang, Xue Wang, Jinyang Gao, Bolin Ding, Jiancan Wu, Xiangnan He, Xiang Wang & RePO: ReLU-based Preference Optimization & 2025-03-10 15:11:07+00:00 & \href{http://arxiv.org/abs/2503.07426v1}{arXiv:2503.07426} \\ \hline
-Gonzalo Mancera, Daniel de Alcala, Julian Fierrez, Ruben Tolosana, Aythami Morales & Is My Text in Your AI Model? Gradient-based Membership Inference Test applied to LLMs & 2025-03-10 14:32:56+00:00 & \href{http://arxiv.org/abs/2503.07384v1}{arXiv:2503.07384} \\ \hline
-Chongming Gao, Mengyao Gao, Chenxiao Fan, Shuai Yuan, Wentao Shi, Xiangnan He & Process-Supervised LLM Recommenders via Flow-guided Tuning & 2025-03-10 14:31:00+00:00 & \href{http://arxiv.org/abs/2503.07377v1}{arXiv:2503.07377} \\ \hline
-Fanqing Meng, Lingxiao Du, Zongkai Liu, Zhixiang Zhou, Quanfeng Lu, Daocheng Fu, Botian Shi, Wenhai Wang, Junjun He, Kaipeng Zhang, Ping Luo, Yu Qiao, Qiaosheng Zhang, Wenqi Shao & MM-Eureka: Exploring Visual Aha Moment with Rule-based Large-scale Reinforcement Learning & 2025-03-10 14:23:12+00:00 & \href{http://arxiv.org/abs/2503.07365v1}{arXiv:2503.07365} \\ \hline
-Yiqing Xie, Alex Xie, Divyanshu Sheth, Pengfei Liu, Daniel Fried, Carolyn Rose & RepoST: Scalable Repository-Level Coding Environment Construction with Sandbox Testing & 2025-03-10 14:16:08+00:00 & \href{http://arxiv.org/abs/2503.07358v1}{arXiv:2503.07358} \\ \hline
-Xing Xie, Jiawei Liu, Ziyue Lin, Huijie Fan, Zhi Han, Yandong Tang, Liangqiong Qu & Unleashing the Potential of Large Language Models for Text-to-Image Generation through Autoregressive Representation Alignment & 2025-03-10 13:49:28+00:00 & \href{http://arxiv.org/abs/2503.07334v1}{arXiv:2503.07334} \\ \hline
-Hao Zhou, Guergana Savova, Lijing Wang & Assessing the Macro and Micro Effects of Random Seeds on Fine-Tuning Large Language Models & 2025-03-10 13:42:04+00:00 & \href{http://arxiv.org/abs/2503.07329v1}{arXiv:2503.07329} \\ \hline
-Yubo Zhao, Qi Wu, Yifan Wang, Yu-Wing Tai, Chi-Keung Tang & Dynamic Path Navigation for Motion Agents with LLM Reasoning & 2025-03-10 13:39:09+00:00 & \href{http://arxiv.org/abs/2503.07323v1}{arXiv:2503.07323} \\ \hline
-Guanxuan Jiang, Yuyang Wang, Pan Hui & Experimental Exploration: Investigating Cooperative Interaction Behavior Between Humans and Large Language Model Agents & 2025-03-10 13:37:36+00:00 & \href{http://arxiv.org/abs/2503.07320v1}{arXiv:2503.07320} \\ \hline
-Jiho Lee, Hayun Lee, Jonghyeon Kim, Kyungjae Lee, Eunwoo Kim & Self-Corrective Task Planning by Inverse Prompting with Large Language Models & 2025-03-10 13:35:51+00:00 & \href{http://arxiv.org/abs/2503.07317v1}{arXiv:2503.07317} \\ \hline
-Weijia Wu, Zeyu Zhu, Mike Zheng Shou & Automated Movie Generation via Multi-Agent CoT Planning & 2025-03-10 13:33:27+00:00 & \href{http://arxiv.org/abs/2503.07314v1}{arXiv:2503.07314} \\ \hline
-Luyi Jiang, Jiayuan Chen, Lu Lu, Xinwei Peng, Lihao Liu, Junjun He, Jie Xu & Benchmarking Chinese Medical LLMs: A Medbench-based Analysis of Performance Gaps and Hierarchical Optimization Strategies & 2025-03-10 13:28:25+00:00 & \href{http://arxiv.org/abs/2503.07306v1}{arXiv:2503.07306} \\ \hline
-Xichen Tan, Yuanjing Luo, Yunfan Ye, Fang Liu, Zhiping Cai & ALLVB: All-in-One Long Video Understanding Benchmark & 2025-03-10 13:18:05+00:00 & \href{http://arxiv.org/abs/2503.07298v1}{arXiv:2503.07298} \\ \hline
-Yani Huang, Richong Zhang, Zhijie Nie, Junfan Chen, Xuefeng Zhang & A Graph-based Verification Framework for Fact-Checking & 2025-03-10 13:02:29+00:00 & \href{http://arxiv.org/abs/2503.07282v1}{arXiv:2503.07282} \\ \hline
-Junyeong Park, Seogyeong Jeong, Seyoung Song, Yohan Lee, Alice Oh & LLM-C3MOD: A Human-LLM Collaborative System for Cross-Cultural Hate Speech Moderation & 2025-03-10 12:20:20+00:00 & \href{http://arxiv.org/abs/2503.07237v1}{arXiv:2503.07237} \\ \hline
-Haicheng Liao, Hanlin Kong, Bonan Wang, Chengyue Wang, Wang Ye, Zhengbing He, Chengzhong Xu, Zhenning Li & CoT-Drive: Efficient Motion Forecasting for Autonomous Driving with LLMs and Chain-of-Thought Prompting & 2025-03-10 12:17:38+00:00 & \href{http://arxiv.org/abs/2503.07234v1}{arXiv:2503.07234} \\ \hline
-Peipei Liu, Jian Sun, Li Chen, Zhaoteng Yan, Peizheng Zhang, Dapeng Sun, Dawei Wang, Dan Li & Control Flow-Augmented Decompiler based on Large Language Model & 2025-03-10 11:52:48+00:00 & \href{http://arxiv.org/abs/2503.07215v1}{arXiv:2503.07215} \\ \hline
-Bingchen Liu, Jingchen Li, Naixing Xu, Xin Li & A Zero-shot Learning Method Based on Large Language Models for Multi-modal Knowledge Graph Embedding & 2025-03-10 11:38:21+00:00 & \href{http://arxiv.org/abs/2503.07202v1}{arXiv:2503.07202} \\ \hline
-Lia Shahnazaryan, Patrick Simianer, Joern Wuebker & Contextual Cues in Machine Translation: Investigating the Potential of Multi-Source Input Strategies in LLMs and NMT Systems & 2025-03-10 11:23:44+00:00 & \href{http://arxiv.org/abs/2503.07195v1}{arXiv:2503.07195} \\ \hline
-Shengkun Ma, Hao Peng, Lei Hou, Juanzi Li & MRCEval: A Comprehensive, Challenging and Accessible Machine Reading Comprehension Benchmark & 2025-03-10 10:20:05+00:00 & \href{http://arxiv.org/abs/2503.07144v1}{arXiv:2503.07144} \\ \hline
-Alessandro Giagnorio, Antonio Mastropaolo, Saima Afrin, Massimiliano Di Penta, Gabriele Bavota & Quantizing Large Language Models for Code Generation: A Differentiated Replication & 2025-03-10 09:26:08+00:00 & \href{http://arxiv.org/abs/2503.07103v1}{arXiv:2503.07103} \\ \hline
-Xiaoyi Liang, Mouxiao Bian, Moxin Chen, Lihao Liu, Junjun He, Jie Xu, Lin Li & A Novel Ophthalmic Benchmark for Evaluating Multimodal Large Language Models with Fundus Photographs and OCT Images & 2025-03-10 09:19:55+00:00 & \href{http://arxiv.org/abs/2503.07094v1}{arXiv:2503.07094} \\ \hline
-Kuo-Hsuan Hung, Xugang Lu, Szu-Wei Fu, Huan-Hsin Tseng, Hsin-Yi Lin, Chii-Wann Lin, Yu Tsao & Linguistic Knowledge Transfer Learning for Speech Enhancement & 2025-03-10 09:00:18+00:00 & \href{http://arxiv.org/abs/2503.07078v1}{arXiv:2503.07078} \\ \hline
-\end{longtable}
+\begin{longtblr}{hlines,vlines,colspec={ X[l] X[l] X[l] X[l] },row{1}={font=\bfseries},rowhead=1,width=\textwidth}
+Authors & Title & Published & Link \\
+Ariba Khan, Stephen Casper, Dylan Hadfield-Menell & Randomness, Not Representation: The Unreliability of Evaluating Cultural Alignment in LLMs & 2025-03-11 17:59:53+00:00 & \href{http://arxiv.org/abs/2503.08688v1}{arXiv:2503.08688} \\
+Haoyu Wang, Sunhao Dai, Haiyuan Zhao, Liang Pang, Xiao Zhang, Gang Wang, Zhenhua Dong, Jun Xu, Ji-Rong Wen & Perplexity Trap: PLM-Based Retrievers Overrate Low Perplexity Documents & 2025-03-11 17:59:00+00:00 & \href{http://arxiv.org/abs/2503.08684v1}{arXiv:2503.08684} \\
+Changxing Liu, Genjia Liu, Zijun Wang, Jinchang Yang, Siheng Chen & CoLMDriver: LLM-based Negotiation Benefits Cooperative Autonomous Driving & 2025-03-11 17:58:42+00:00 & \href{http://arxiv.org/abs/2503.08683v1}{arXiv:2503.08683} \\
+Viktor Moskvoretskii, Chris Biemann, Irina Nikishina & Self-Taught Self-Correction for Small Language Models & 2025-03-11 17:57:44+00:00 & \href{http://arxiv.org/abs/2503.08681v1}{arXiv:2503.08681} \\
+Pierpaolo Basile, Lucia Siciliani, Elio Musacchio, Giovanni Semeraro & Exploring the Word Sense Disambiguation Capabilities of Large Language Models & 2025-03-11 17:50:44+00:00 & \href{http://arxiv.org/abs/2503.08662v1}{arXiv:2503.08662} \\
+Parishad BehnamGhader, Nicholas Meade, Siva Reddy & Exploiting Instruction-Following Retrievers for Malicious Information Retrieval & 2025-03-11 17:36:53+00:00 & \href{http://arxiv.org/abs/2503.08644v1}{arXiv:2503.08644} \\
+Dongping Li, Tielong Cai, Tianci Tang, Wenhao Chai, Katherine Rose Driggs-Campbell, Gaoang Wang & EMMOE: A Comprehensive Benchmark for Embodied Mobile Manipulation in Open Environments & 2025-03-11 16:42:36+00:00 & \href{http://arxiv.org/abs/2503.08604v1}{arXiv:2503.08604} \\
+Delip Rao, Weiqiu You, Eric Wong, Chris Callison-Burch & NSF-SciFy: Mining the NSF Awards Database for Scientific Claims & 2025-03-11 16:35:08+00:00 & \href{http://arxiv.org/abs/2503.08600v1}{arXiv:2503.08600} \\
+Shehreen Azad, Vibhav Vineet, Yogesh Singh Rawat & HierarQ: Task-Aware Hierarchical Q-Former for Enhanced Video Understanding & 2025-03-11 16:21:23+00:00 & \href{http://arxiv.org/abs/2503.08585v1}{arXiv:2503.08585} \\
+Rune M. Jacobsen, Samuel Rhys Cox, Carla F. Griggio, Niels van Berkel & Chatbots for Data Collection in Surveys: A Comparison of Four Theory-Based Interview Probes & 2025-03-11 16:16:49+00:00 & \href{http://dx.doi.org/10.1145/3706598.3714128}{DOI:3706598.3714128} \\
+Minjun Zhu, Yixuan Weng, Linyi Yang, Yue Zhang & DeepReview: Improving LLM-based Paper Review with Human-like Deep Thinking Process & 2025-03-11 15:59:43+00:00 & \href{http://arxiv.org/abs/2503.08569v1}{arXiv:2503.08569} \\
+Wanyong Feng, Peter Tran, Stephen Sireci, Andrew Lan & Reasoning and Sampling-Augmented MCQ Difficulty Prediction via LLMs & 2025-03-11 15:39:43+00:00 & \href{http://arxiv.org/abs/2503.08551v1}{arXiv:2503.08551} \\
+Xian Gao, Zongyun Zhang, Mingye Xie, Ting Liu, Yuzhuo Fu & Graph of AI Ideas: Leveraging Knowledge Graphs and LLMs for AI Research Idea Generation & 2025-03-11 15:36:38+00:00 & \href{http://arxiv.org/abs/2503.08549v1}{arXiv:2503.08549} \\
+Sher Badshah, Hassan Sajjad & DAFE: LLM-Based Evaluation Through Dynamic Arbitration for Free-Form Question-Answering & 2025-03-11 15:29:55+00:00 & \href{http://arxiv.org/abs/2503.08542v1}{arXiv:2503.08542} \\
+Soham Deshmukh, Satvik Dixit, Rita Singh, Bhiksha Raj & Mellow: a small audio language model for reasoning & 2025-03-11 15:29:00+00:00 & \href{http://arxiv.org/abs/2503.08540v1}{arXiv:2503.08540} \\
+Zhaohui Liang, Yonglin Chen, Naser Al Madi, Can Liu & Desirable Unfamiliarity: Insights from Eye Movements on Engagement and Readability of Dictation Interfaces & 2025-03-11 15:28:09+00:00 & \href{http://arxiv.org/abs/2503.08539v1}{arXiv:2503.08539} \\
+Andres M Bran, Theo A Neukomm, Daniel P Armstrong, Zlatko Jončev, Philippe Schwaller & Chemical reasoning in LLMs unlocks steerable synthesis planning and reaction mechanism elucidation & 2025-03-11 15:27:17+00:00 & \href{http://arxiv.org/abs/2503.08537v1}{arXiv:2503.08537} \\
+Tong Wei, Yijun Yang, Junliang Xing, Yuanchun Shi, Zongqing Lu, Deheng Ye & GTR: Guided Thought Reinforcement Prevents Thought Collapse in RL-based VLM Agent Training & 2025-03-11 15:17:02+00:00 & \href{http://arxiv.org/abs/2503.08525v1}{arXiv:2503.08525} \\
+Siqi Fan, Xuezhi Fang, Xingrun Xing, Peng Han, Shuo Shang, Yequan Wang & Position-Aware Depth Decay Decoding ($D^3$): Boosting Large Language Model Inference Efficiency & 2025-03-11 15:15:54+00:00 & \href{http://arxiv.org/abs/2503.08524v1}{arXiv:2503.08524} \\
+Weijie Zhou, Yi Peng, Manli Tao, Chaoyang Zhao, Honghui Dong, Ming Tang, Jinqiao Wang & LightPlanner: Unleashing the Reasoning Capabilities of Lightweight Large Language Models in Task Planning & 2025-03-11 14:57:53+00:00 & \href{http://arxiv.org/abs/2503.08508v1}{arXiv:2503.08508} \\
+Xian Gao, Jiacheng Ruan, Jingsheng Gao, Ting Liu, Yuzhuo Fu & ReviewAgents: Bridging the Gap Between Human and AI-Generated Paper Reviews & 2025-03-11 14:56:58+00:00 & \href{http://arxiv.org/abs/2503.08506v1}{arXiv:2503.08506} \\
+Han Cao, Lingwei Wei, Wei Zhou, Songlin Hu & Enhancing Multi-Hop Fact Verification with Structured Knowledge-Augmented Large Language Models & 2025-03-11 14:47:24+00:00 & \href{http://arxiv.org/abs/2503.08495v1}{arXiv:2503.08495} \\
+Jianian Zhu, Hang Wu, Haojie Wang, Yinghui Li, Biao Hou, Ruixuan Li, Jidong Zhai & FastCache: Optimizing Multimodal LLM Serving through Lightweight KV-Cache Compression Framework & 2025-03-11 14:10:58+00:00 & \href{http://arxiv.org/abs/2503.08461v1}{arXiv:2503.08461} \\
+Hsin-Ling Hsu, Ping-Sheng Lin, Jing-Di Lin, Jengnan Tzeng & KAP: MLLM-assisted OCR Text Enhancement for Hybrid Retrieval in Chinese Non-Narrative Documents & 2025-03-11 14:01:03+00:00 & \href{http://arxiv.org/abs/2503.08452v1}{arXiv:2503.08452} \\
+Yannik Blei, Michael Krawez, Tobias Jülg, Pierre Krack, Florian Walter, Wolfram Burgard & LLM-Pack: Intuitive Grocery Handling for Logistics Applications & 2025-03-11 13:56:26+00:00 & \href{http://arxiv.org/abs/2503.08445v1}{arXiv:2503.08445} \\
+Feiyang Wu, Zhuohang Bian, Guoyang Duan, Tianle Xu, Junchi Wu, Teng Ma, Yongqiang Yao, Ruihao Gong, Youwei Zhuo & TokenSim: Enabling Hardware and Software Exploration for Large Language Model Inference Systems & 2025-03-11 13:24:39+00:00 & \href{http://arxiv.org/abs/2503.08415v1}{arXiv:2503.08415} \\
+Elizaveta Kuznetsova, Ilaria Vitulano, Mykola Makhortykh, Martha Stolze, Tomas Nagy, Victoria Vziatysheva & Fact-checking with Generative AI: A Systematic Cross-Topic Examination of LLMs Capacity to Detect Veracity of Political Information & 2025-03-11 13:06:40+00:00 & \href{http://arxiv.org/abs/2503.08404v1}{arXiv:2503.08404} \\
+Jiawei Zhou, Lei Chen & OpenRAG: Optimizing RAG End-to-End via In-Context Retrieval Learning & 2025-03-11 13:04:05+00:00 & \href{http://arxiv.org/abs/2503.08398v1}{arXiv:2503.08398} \\
+Leandro Carísio Fernandes, Leandro dos Santos Ribeiro, Marcos Vinícius Borela de Castro, Leonardo Augusto da Silva Pacheco, Edans Flávius de Oliveira Sandes & JurisTCU: A Brazilian Portuguese Information Retrieval Dataset with Query Relevance Judgments & 2025-03-11 12:39:04+00:00 & \href{http://arxiv.org/abs/2503.08379v1}{arXiv:2503.08379} \\
+Jingkai Sun, Qiang Zhang, Gang Han, Wen Zhao, Zhe Yong, Yan He, Jiaxu Wang, Jiahang Cao, Yijie Guo, Renjing Xu & Trinity: A Modular Humanoid Robot AI System & 2025-03-11 11:50:36+00:00 & \href{http://arxiv.org/abs/2503.08338v1}{arXiv:2503.08338} \\
+\end{longtblr}
 \end{document}
