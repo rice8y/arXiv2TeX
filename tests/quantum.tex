@@ -1,26 +1,24 @@
 \documentclass{ltjsarticle}
 \usepackage[hidelinks]{hyperref}
-\usepackage{float}
 \usepackage[margin=1in]{geometry}
-\usepackage{longtable}
-\usepackage{array}
-\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
-\newlength\autolength
-\setlength\autolength{\dimexpr(\textwidth - (5\arrayrulewidth + 8\tabcolsep)) / 4\relax}
+\usepackage{amsmath}
+\usepackage{tabularray}
+\DefTblrTemplate{conthead-text}{default}{}
+\DefTblrTemplate{caption}{default}{}
+\DefTblrTemplate{conthead}{default}{}
+\DefTblrTemplate{capcont}{default}{}
 \begin{document}
-\begin{longtable}{|P{\autolength}|P{\autolength}|P{\autolength}|P{\autolength}|}
-\hline
-\textbf{Authors} & \textbf{Title} & \textbf{Published} & \textbf{Link} \\
-\hline
-Mahmoud Kalash, Aditya Sudharsanam, M. H. M. Passos, Valentina Parigi, Maria Chekhova & マルチモード絞りのリアルタイム監視 & 2025-03-10 16:04:35+00:00 & \href{http://arxiv.org/abs/2503.07486v1}{arXiv:2503.07486} \\ \hline
-I. Y. Park, P. Y. Wui & CMBパワースペクトルに対する有限温度効果の影響 & 2025-03-10 15:46:53+00:00 & \href{http://arxiv.org/abs/2503.07469v1}{arXiv:2503.07469} \\ \hline
-Pedro R. Nicácio Falcão, Piotr Sierant, Jakub Zakrzewski, Emanuele Tirrito & 多体のローカライズされたシステムの魔法のダイナミクス & 2025-03-10 15:46:49+00:00 & \href{http://arxiv.org/abs/2503.07468v1}{arXiv:2503.07468} \\ \hline
-Lajos Diósi & Schrödinger-Newton方程式の因果関係：地平線上の直接テスト？ & 2025-03-10 15:38:03+00:00 & \href{http://arxiv.org/abs/2503.07458v1}{arXiv:2503.07458} \\ \hline
-Andrea Mammola, Quentin Schaeverbeke, Matthieu M. Desjardins & アイドルクイットからの最適な接続性キャビティを介した絡み合った門のクロストークの残留カップリング & 2025-03-10 15:36:10+00:00 & \href{http://arxiv.org/abs/2503.07455v1}{arXiv:2503.07455} \\ \hline
-Antonio De Felice, Anamaria Hell & 宇宙論的な程度のプロカフィールドの自由度 & 2025-03-10 15:36:08+00:00 & \href{http://arxiv.org/abs/2503.07454v1}{arXiv:2503.07454} \\ \hline
-Yasha Savelyev & 量子マスロフクラス & 2025-03-10 15:22:12+00:00 & \href{http://arxiv.org/abs/2503.07441v1}{arXiv:2503.07441} \\ \hline
-Patrick Bourg, Rodrigo Panosso Macedo, Andrew Spiers, Benjamin Leather, Bonga Béatrice, Adam Pound & シュワルツチャイルド時代のヌルインフィニティでの二次四分位モード & 2025-03-10 15:14:51+00:00 & \href{http://arxiv.org/abs/2503.07432v1}{arXiv:2503.07432} \\ \hline
-Christian Schlager, Romain Albert, Gerhard Kirchmair & 真空ギャップマイクロストリップ共振器の製造と特性評価 & 2025-03-10 15:14:11+00:00 & \href{http://arxiv.org/abs/2503.07431v1}{arXiv:2503.07431} \\ \hline
-Koustav Roy, Gourab Paul, Debika Debnath, Kuntal Bhattacharyya, Saurabh Basu & マヨラナ四階級ドットジョセフソンジャンクションのフローケットエンジニアリングダイオードパフォーマンス & 2025-03-10 15:12:21+00:00 & \href{http://arxiv.org/abs/2503.07428v1}{arXiv:2503.07428} \\ \hline
-\end{longtable}
+\begin{longtblr}{hlines,vlines,colspec={ X[l] X[l] X[l] X[l] },row{1}={font=\bfseries},rowhead=1,width=\textwidth}
+Authors & Title & Published & Link \\
+Tobias Kreiman, Aditi S. Krishnapriyan & 機械学習力フィールドの分布シフトを理解し、緩和する & 2025-03-11 17:54:29+00:00 & \href{http://arxiv.org/abs/2503.08674v1}{arXiv:2503.08674} \\
+Christian Peterson, Edgar Gasperín, Alex Vañó-Viñuales & インバーシオン - ミンコフスキー時代の線形化コンフォーマルアインシュタインフィールド方程式の数値進化 & 2025-03-11 17:53:54+00:00 & \href{http://arxiv.org/abs/2503.08672v1}{arXiv:2503.08672} \\
+Amirhossein Samandar, Javier Carrón Duque, Craig J. Copi, Mikel Martin Barandiaran, Deyan P. Mihaylov, Glenn D. Starkman, Yashar Akrami, Stefano Anselmi, Fernando Cornet-Gomez, Johannes R. Eskilt, Andrew H. Jaffe, Arthur Kosowsky, Anna Negro, Joline Noltmann, Thiago S. Pereira, Andrius Tamosiunas & 宇宙トポロジー。パートIIIB。オリエンテブルユークリッドマニホールドのスピン2摂動の固有モードと相関マトリックス & 2025-03-11 17:53:42+00:00 & \href{http://arxiv.org/abs/2503.08671v1}{arXiv:2503.08671} \\
+Anuj Aggarwal, Jorge Fernández-Pendás, Tahereh Abad, Daryoush Shiri, Halldór Jakobsson, Marcus Rommel, Andreas Nylander, Emil Hogedal, Amr Osman, Janka Biznárová, Robert Rehammar, Michele Faucci Giannelli, Anita Fadavi Roudsari, Jonas Bylander, Giovanna Tancredi & 超伝導量子プロセッサでのフラックスコントロール信号のトランジェントを緩和する & 2025-03-11 17:37:02+00:00 & \href{http://arxiv.org/abs/2503.08645v1}{arXiv:2503.08645} \\
+Joseph Jachinowski, Hassan Alnatah, David W. Snoke, Peter B. Littlewood & ポリトンの2次元のボーズガスにおける一貫性の光学プローブ & 2025-03-11 17:16:45+00:00 & \href{http://arxiv.org/abs/2503.08629v1}{arXiv:2503.08629} \\
+Aleksandr Berezutskii, Atithi Acharya, Roman Ellerbrock, Johnnie Gray, Reza Haghshenas, Zichang He, Abid Khan, Viacheslav Kuzmin, Minzhao Liu, Dmitry Lyakh, Danylo Lykov, Salvatore Mandrà, Christopher Mansell, Alexey Melnikov, Artem Melnikov, Vladimir Mironov, Dmitry Morozov, Florian Neukart, Alberto Nocera, Michael A. Perlin, Michael Perelshtein, Ruslan Shaydulin, Benjamin Villalonga, Markus Pflitsch, Marco Pistoia, Valerii Vinokur, Yuri Alexeev & 量子コンピューティング用のテンソルネットワーク & 2025-03-11 17:10:41+00:00 & \href{http://arxiv.org/abs/2503.08626v1}{arXiv:2503.08626} \\
+Soumya Das & 量子の絡み合いの側面と区別不可能性 & 2025-03-11 17:06:02+00:00 & \href{http://arxiv.org/abs/2503.08623v1}{arXiv:2503.08623} \\
+Michele Viscardi, Marcello Dalmonte, Alioscia Hamma, Emanuele Tirrito & スピンモデルでのエンタングルメント構造とスタビライザーエントロピーの相互作用 & 2025-03-11 17:01:00+00:00 & \href{http://arxiv.org/abs/2503.08620v1}{arXiv:2503.08620} \\
+Sabyasachi Maulik, Arpita Mitra, Debangshu Mukherjee, Augniva Ray & 帯電したdeシッターブラックホールのextremalに近いエントロピーへの対数修正 & 2025-03-11 16:56:42+00:00 & \href{http://arxiv.org/abs/2503.08617v1}{arXiv:2503.08617} \\
+Ipek Efe, Alexander Vogel, William S. Huxter, Elzbieta Gradauskaite, Iaroslav Gaponenko, Patrycja Paruch, Christian L. Degen, Marta D. Rossell, Manfred Fiebig, Morgan Trassin & 格子化学による強誘電性薄膜におけるナノスケールの静電制御 & 2025-03-11 16:53:40+00:00 & \href{http://arxiv.org/abs/2503.08613v1}{arXiv:2503.08613} \\
+\end{longtblr}
 \end{document}
