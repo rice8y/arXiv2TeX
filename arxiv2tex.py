@@ -21,21 +21,28 @@ def parse_args():
     return parser.parse_args()
 
 def escape_latex(s):
-    s = s.replace("\\", r"\textbackslash{}")
-    replacements = {
-        '&': r'\&',
-        '%': r'\%',
-        '$': r'\$',
-        '#': r'\#',
-        '_': r'\_',
-        '{': r'\{',
-        '}': r'\}',
-        '~': r'\textasciitilde{}',
-        '^': r'\textasciicircum{}'
-    }
-    for char, replacement in replacements.items():
-        s = s.replace(char, replacement)
-    return s
+    parts = re.split(r'(\$.*?\$)', s)
+    escaped_parts = []
+    for part in parts:
+        if part.startswith("$") and part.endswith("$"):
+            escaped_parts.append(part)
+        else:
+            part = part.replace("\\", r"\textbackslash{}")
+            replacements = {
+                '&': r'\&',
+                '%': r'\%',
+                '$': r'\$',
+                '#': r'\#',
+                '_': r'\_',
+                '{': r'\{',
+                '}': r'\}',
+                '~': r'\textasciitilde{}',
+                '^': r'\textasciicircum{}'
+            }
+            for char, replacement in replacements.items():
+                part = part.replace(char, replacement)
+            escaped_parts.append(part)
+    return "".join(escaped_parts)
 
 def preamble(lines, args, col):
     cls = args.cls or ("jsarticle" if args.engine in {"uplatex", "platex"} else "article")
@@ -46,13 +53,13 @@ def preamble(lines, args, col):
         
     lines.extend([
         "\\usepackage[hidelinks]{hyperref}",
-        "\\usepackage{float}",
         "\\usepackage[margin=1in]{geometry}",
-        "\\usepackage{longtable}",
-        "\\usepackage{array}",
-        "\\newcolumntype{P}[1]{>{\\raggedright\\arraybackslash}p{#1}}",
-        "\\newlength\\autolength",
-        f"\\setlength\\autolength{{\\dimexpr(\\textwidth - (5\\arrayrulewidth + 8\\tabcolsep)) / {len(col)}\\relax}}"
+        "\\usepackage{amsmath}",
+        "\\usepackage{tabularray}",
+        "\\DefTblrTemplate{conthead-text}{default}{}",
+        "\\DefTblrTemplate{caption}{default}{}",
+        "\\DefTblrTemplate{conthead}{default}{}",
+        "\\DefTblrTemplate{capcont}{default}{}"
     ])
     
 def get_value(col, r, translator, translate, service_urls):
@@ -64,10 +71,13 @@ def get_value(col, r, translator, translate, service_urls):
         else:
             return escape_latex(r.title)
     elif col == "summary":
+        summary = " ".join(r.summary.split())
+        url_pattern = re.compile(r'https?://\S+')
         if translate:
-            return escape_latex(translator(" ".join(r.summary.split()), translate, service_urls))
+            summary = escape_latex(translator(summary, translate, service_urls))
         else:
-            return escape_latex(" ".join(r.summary.split()))
+            summary = escape_latex(summary)
+        return url_pattern.sub(lambda match: f"\\url{{{match.group(0)}}}", summary)
     elif col == "published":
         return escape_latex(str(r.published))
     elif col == "link":
@@ -89,15 +99,13 @@ def get_value(col, r, translator, translate, service_urls):
 
 def make_table(results, columns, translator, translate, service_urls):
     table_lines = []
-    table_lines.append("\\begin{longtable}{|" + "P{\\autolength}|" * len(columns) + "}")
-    table_lines.append("\\hline")
-    header = " & ".join([f"\\textbf{{{col.capitalize()}}}" for col in columns])
+    table_lines.append("\\begin{longtblr}{hlines,vlines,colspec={ " + "X[l] " * len(columns) + "},row{1}={font=\\bfseries},rowhead=1,width=\\textwidth}")
+    header = " & ".join([f"{col.capitalize()}" for col in columns])
     table_lines.append(header + " \\\\")
-    table_lines.append("\\hline")
     for r in results:
         row = " & ".join([get_value(col, r, translator, translate, service_urls) for col in columns])
-        table_lines.append(row + " \\\\ \\hline")
-    table_lines.append("\\end{longtable}")
+        table_lines.append(row + " \\\\")
+    table_lines.append("\\end{longtblr}")
     return table_lines
 
 def compile(file, mode, engine):
