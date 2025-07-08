@@ -29,7 +29,7 @@ jobs:
           python arxiv2tex.py --query llm --max_results 5 --mode manual --cls ltjsarticle --translate ja --prefix test02
 
       - name: Compile LaTeX documents
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: test01.tex test02.tex
           latexmk_use_lualatex: true
